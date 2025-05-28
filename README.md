@@ -29,6 +29,9 @@ python -m http.server 8000
 
 Then open http://localhost:8000
 📸 Screenshot
+## 📸 Screenshot
+
+![Chatbot Screenshot](screenshot.png)
 
 
 🛠️ Built With
