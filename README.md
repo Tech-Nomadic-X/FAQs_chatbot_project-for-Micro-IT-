@@ -10,8 +10,9 @@ This is an AI-powered FAQ chatbot built using **Dialogflow**, designed to help a
   - Duration of the internship?
   - Company overview
   - Working hours
-- Fallback response for unrecognized questions
-- Voice input support
+  - Fallback response for unrecognized questions
+  - Voice input support
+  - Clean HTML interface with Dialogflow Web Demo integration
 
 ## 💬 Live Chatbot Demo
 
@@ -21,14 +22,19 @@ This is an AI-powered FAQ chatbot built using **Dialogflow**, designed to help a
 
 1. Clone or download the repository.
 2. Open the folder in VS Code.
-3. Right-click `index.html` → **Open with Live Server**  
-   *(Or use Python to run a local server.)*
+3. Install required Python packages (Flask):
+```bash
+pip install flask
+4. Run the Flask app:
+python app.py
+5. Open your browser and go to: http://127.0.0.1:5000
 
+   *(Or use Python to run a local server.)*
 ```bash
 python -m http.server 8000
 
 Then open http://localhost:8000
-📸 Screenshot
+
 ## 📸 Screenshot
 
 ![Chatbot Screenshot](screenshot.png)
@@ -36,10 +42,13 @@ Then open http://localhost:8000
 
 🛠️ Built With
 
-- Dialogflow ES– Natural Language Understanding
-- HTML – Web interface
-- NLP Intents & Responses
-- Web Demo Integration
+   * Flask – Lightweight Python web framework to serve chatbot UI
+
+   * Dialogflow ES – Natural Language Understanding
+
+   * HTML, CSS, JavaScript – Frontend interface
+
+   * Dialogflow Web Demo – Integrated into web page
 
 📬 Contact
 
