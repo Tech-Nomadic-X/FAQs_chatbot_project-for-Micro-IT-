@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Internship FAQ Chatbot</title>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #5f5f7c;
+      text-align: center;
+      padding: 30px;
+      margin: 0;
+    }
+
+    h2 {
+      color: #fff;
+    }
+
+    p {
+      color: #eaeaea;
+    }
+
+    /* Dialogflow widget styling */
+    df-messenger {
+      --df-messenger-bot-message: #e6e2e2;
+      --df-messenger-button-titlebar-color: #152a41;
+      --df-messenger-chat-background-color: #707070;
+      --df-messenger-font-color: #000000;
+      --df-messenger-send-icon: #1d1d25;
+      --df-messenger-user-message: #74af74;
+      position: fixed;
+      bottom: 0;
+      right: 20px;
+      z-index: 999;
+    }
+
+    /* Hide the default chat icon visually but keep it interactive */
+    df-messenger .df-chat-button {
+      opacity: 0;
+      pointer-events: auto;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      z-index: 1001;
+    }
+
+    /* Your custom icon - positioned exactly over the invisible default button */
+    #customChatIcon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: transparent;
+      background-image: url('/static/chat-icon.png'); /* Your local icon path */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      z-index: 1002;
+      pointer-events: none; /* Let clicks pass through */
+    }
+
+    /* Tooltip on hover */
+    #customChatIcon::after {
+      content: "Hello! Need help with internship? Ask me anything";
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      background-color: #1c1c1c;
+      color: #fff;
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    #customChatIcon:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <h2>💬 Internship FAQ Chatbot</h2>
+  <p>Ask questions about internship applications, stipend, remote work, and more!</p>
+
+  <!-- Dialogflow Messenger widget -->
+  <df-messenger
+    intent="WELCOME"
+    chat-title="InternshipFAQBot"
+    agent-id="ae28ee9c-6ae6-43d7-a2a3-498f89bc1c52"
+    language-code="en">
+  </df-messenger>
+
+  <!-- Your custom icon overlay -->
+  <div id="customChatIcon" title="Open Chat"></div>
+
+  <script>
+    // Auto-scroll into view when chat icon is clicked
+    window.addEventListener('dfMessengerLoaded', () => {
+      const dfMessenger = document.querySelector('df-messenger');
+      const chatIcon = document.querySelector('df-messenger .df-chat-button');
+
+      chatIcon.addEventListener('click', () => {
+        setTimeout(() => {
+          dfMessenger.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }, 300); // slight delay to wait for expansion
+      });
+    });
+  </script>
+</body>
+</html>
